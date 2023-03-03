@@ -1,1 +1,0 @@
-web:puthon main.py
