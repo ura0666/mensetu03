@@ -1,66 +1,73 @@
 from flask import Flask, request, abort
- 
-from linebot import (
-    LineBotApi, WebhookHandler
-)
-from linebot.exceptions import (
-    InvalidSignatureError
-)
-from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage,
-)
+
+from linebot import LineBotApi, WebhookHandler
+from linebot.exceptions import InvalidSignatureError
+from linebot.models import MessageEvent, TextMessage, TextSendMessage, ImageSendMessage
+
 import os
- 
+
 app = Flask(__name__)
- 
-#環境変数取得
-# LINE Developersで設定されているアクセストークンとChannel Secretをを取得し、設定します。
-YOUR_CHANNEL_ACCESS_TOKEN = os.environ["zcykfWZXMJOEFL737EkziA7Wjup3zAnWpVmZGX4K0jfeuHEnvExsUjGg0AFmczL5oya0Vlt+27Y50F0fyWWWYA3kaMrUesYrnrw7KkuQqMkUMEW5J2kGeXabLKXA5xOKstDKFV/ul0wHAg26LXQ6DAdB04t89/1O/w1cDnyilFU="]
-YOUR_CHANNEL_SECRET = os.environ["d2f3ffeb3ca5fc872f3254faba1326b2"]
- 
+
+# チャネルシークレットを設定
+YOUR_CHANNEL_SECRET = "d2f3ffeb3ca5fc872f3254faba1326b2"
+# チャネルアクセストークンを設定
+YOUR_CHANNEL_ACCESS_TOKEN = "zcykfWZXMJOEFL737EkziA7Wjup3zAnWpVmZGX4K0jfeuHEnvExsUjGg0AFmczL5oya0Vlt+27Y50F0fyWWWYA3kaMrUesYrnrw7KkuQqMkUMEW5J2kGeXabLKXA5xOKstDKFV/ul0wHAg26LXQ6DAdB04t89/1O/w1cDnyilFU="
+
 line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(YOUR_CHANNEL_SECRET)
- 
- 
-## 1 ##
-#Webhookからのリクエストをチェックします。
+
+# https://example.herokuapp.com/callback にアクセスされたら以下の関数を実行する
 @app.route("/callback", methods=['POST'])
 def callback():
-    # リクエストヘッダーから署名検証のための値を取得します。
+    # アクセス時に送られてきたデータ「X-Line-Signature」を代入
     signature = request.headers['X-Line-Signature']
- 
-    # リクエストボディを取得します。
+
+    # アクセス時に送られてきたデータの主な部分を代入
     body = request.get_data(as_text=True)
-    app.logger.info("Request body: " + body)
- 
-    # handle webhook body
-　# 署名を検証し、問題なければhandleに定義されている関数を呼び出す。
+
+    # try 内でエラーが発生したら except の文を実行
     try:
+        # ハンドラーに定義されている関数を呼び出す
         handler.handle(body, signature)
-　# 署名検証で失敗した場合、例外を出す。
+    # もし「InvalidSigunatureError」というエラーが発生したら、以下のプログラムを実行
     except InvalidSignatureError:
+        # リクエストを送った側に400番(悪いリクエストですよー！)を返す
         abort(400)
-　# handleの処理を終えればOK
-    return 'OK'
- 
-## 2 ##
-###############################################
-#LINEのメッセージの取得と返信内容の設定(オウム返し)
-###############################################
- 
-#LINEでMessageEvent（普通のメッセージを送信された場合）が起こった場合に、
-#def以下の関数を実行します。
-#reply_messageの第一引数のevent.reply_tokenは、イベントの応答に用いるトークンです。 
-#第二引数には、linebot.modelsに定義されている返信用のTextSendMessageオブジェクトを渡しています。
- 
+
+    # すべて順調にいけば、リクエストを送った側に「OK」と返す
+    return "OK"
+
+# ハンドラーに定義されている関数
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=event.message.text)) #ここでオウム返しのメッセージを返します。
- 
-# ポート番号の設定
-if __name__ == "__main__":
-#    app.run()
-    port = int(os.getenv("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
+    # ここにメッセージの内容による処理を書いていこう
+
+    # メッセージの種類が「テキスト」なら
+    if event.type == "message":
+        response_message = ""
+
+        # event.message.text という変数にメッセージの内容が入っている
+        if (event.message.text == "おはようございます"):
+            response_message = "Good morning!"
+
+        elif (event.message.text == "こんにちは"):
+            response_message = "Good afternoon!"
+
+        elif (event.message.text == "こんばんは"):
+            response_message = "Good evening!"
+
+        else:
+            response_message = "その言葉はわかりません。"
+
+        # 返信文を送信
+        # response_message の中に入っている文を返す
+        line_bot_api.reply_message(
+            event.reply_token,
+            [
+                TextSendMessage(text=response_message)
+            ]
+        )
+
+# ポート番号を環境変数から取得
+port = os.getenv("PORT")
+app.run(host="0.0.0.0", port=port)
