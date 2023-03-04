@@ -45,11 +45,10 @@ def handle_message(event):
     # メッセージの種類が「テキスト」なら
     if event.type == "message":
         response_message = ""
+
     # event.message.text という変数にメッセージの内容が入っている
-        
         if (event.message.text == "開始"):
-            response_message = "始めます"
-            response_message1 = "質問１"
+            response_message = "始めます\n質問１"
 
         elif (event.message.text .startswith("1","１")):
             a1 = event.message.text
@@ -58,6 +57,10 @@ def handle_message(event):
         elif (event.message.text .startswith("2","２")):
             a2 = event.message.text
             response_message = "質問３!"
+        
+        elif (event.message.text .startswith("2","２")):
+            a3=event.message.text
+            response_message = "質問４"
 
         else:
             response_message = "その言葉はわかりません。"
