@@ -64,12 +64,12 @@ def handle_message(event):
 
         # 返信文を送信
         # response_message の中に入っている文を返す
-            line_bot_api.reply_message(
-                event.reply_token,
-                [
-                    TextSendMessage(text=response_message)
-                ]
-            )
+        line_bot_api.reply_message(
+            event.reply_token,
+            [
+                TextSendMessage(text=response_message)
+            ]
+        )
 
 # ポート番号を環境変数から取得
 port = os.getenv("PORT")
