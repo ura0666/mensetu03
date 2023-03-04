@@ -64,7 +64,7 @@ def handle_message(event):
 
         elif (event.message.text .startswith(("4","4"))):
             a4=event.message.text
-            response_message = a1+a2+a3+a4
+            response_message = a1
         else:
             response_message = "その言葉はわかりません。"
 
