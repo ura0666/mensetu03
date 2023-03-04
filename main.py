@@ -48,17 +48,23 @@ def handle_message(event):
 
     # event.message.text という変数にメッセージの内容が入っている
         if (event.message.text == "開始"):
-            response_message = "始めます\n質問１"
+            response_message = "ルール・応答の文頭に質問数を入力してください 例：１はい、（応答分）\n始めます\n質問１\nどうして当社に応募したのですか？"
 
         elif (event.message.text  .startswith(("1","１"))):
-            response_message = "質問２"
+            a1=event.message.text
+            response_message = "質問２\n当社に対してどんな印象を持っていますか？"
 
         elif (event.message.text .startswith(("2","２"))):
-            response_message = "質問３!"
+            a2=event.message.text
+            response_message = "質問３\n当社の店（商品）を利用したことがありますか？"
         
-        elif (event.message.text .startswith(("2","２"))):
-            response_message = "質問４"
+        elif (event.message.text .startswith(("3","3"))):
+            a3=event.message.text
+            response_message = "質問４\nほかにはどんな会社を受けましたか？"
 
+        elif (event.message.text .startswith(("4","4"))):
+            a4=event.message.text
+            response_message = a1+a2+a3+a4
         else:
             response_message = "その言葉はわかりません。"
 
