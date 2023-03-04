@@ -49,7 +49,12 @@ def handle_message(event):
         
         if (event.message.text == "開始"):
             response_message = "始めます"
-            
+            response_message = "ルール・応答文の最初に質問番号を入れてください"
+            response_message = "質問１"
+            a==2
+
+        elif(event.message.text in "1")
+            response_message = "質問２"
 
         elif (event.message.text == "こんばんは"):
             response_message = "Good evening!"
@@ -61,12 +66,17 @@ def handle_message(event):
 
         # 返信文を送信
         # response_message の中に入っている文を返す
-        line_bot_api.reply_message(
-            event.reply_token,
-            [
-                TextSendMessage(text=response_message)
-            ]
-        )
+        i==0
+
+        while(i<=a)
+            line_bot_api.reply_message(
+                event.reply_token,
+                [
+                    TextSendMessage(text=response_message[a])
+                ]
+            )
+            a+=1
+
 
 # ポート番号を環境変数から取得
 port = os.getenv("PORT")
