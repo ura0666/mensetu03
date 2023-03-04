@@ -49,20 +49,19 @@ def handle_message(event):
         
         if (event.message.text == "開始"):
             q=2
-            response_message = "始めます"
-            response_message = "質問１"
+            response_message = ["始めます","質問１"]
 
         elif (event.message.text .startswith("1","１")):
             q=1
-            response_message = "しつもん２"
+            response_message = ["質問２"]
 
-        elif (event.message.text == "こんばんは"):
+        elif (event.message.text .startswith("2","２")):
             q=1
-            response_message = "Good evening!"
+            response_message = ["質問３!"]
 
         else:
             q=1
-            response_message = "その言葉はわかりません。"
+            response_message = ["その言葉はわかりません。"]
 
         # 返信文を送信
         # response_message の中に入っている文を返す
