@@ -53,7 +53,7 @@ def handle_message(event):
             response_message = "質問１"
             
 
-        elif(event.message.text = "1")
+        elif(event.message.text == "1")
             response_message = "質問２"
 
         elif (event.message.text == "こんばんは"):
