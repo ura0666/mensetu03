@@ -64,7 +64,7 @@ def handle_message(event):
 
         elif (event.message.text .startswith(("4","4"))):
             a4=event.message.text
-            response_message = "質問は終わりです面接練習を終了します \n ホームページを通じて応募させてもらいました。 \n 御社のクリーンなイメージを強く感じました。\n 以前から利用してました。\n 御社と比較して規模の小さな工務店1社にも応募しています。"
+            response_message = "質問は終わりです面接練習を終了します \n 書いた文章を見直して面接本番に備えよう！"
         else:
             response_message = "その言葉はわかりません。"
 
