@@ -45,19 +45,20 @@ def handle_message(event):
     # メッセージの種類が「テキスト」なら
     if event.type == "message":
         response_message = ""
-
-        # event.message.text という変数にメッセージの内容が入っている
-        if (event.message.text == "おはようございます"):
-            response_message = "Good morning!"
-
-        elif (event.message.text == "こんにちは"):
-            response_message = "Good afternoon!"
+ # event.message.text という変数にメッセージの内容が入っている
+        
+        if (event.message.text == "開始"):
+            a+=1
+            response_message = "始めます"
+            response_message = "質問1"
 
         elif (event.message.text == "こんばんは"):
             response_message = "Good evening!"
 
         else:
             response_message = "その言葉はわかりません。"
+       
+
 
         # 返信文を送信
         # response_message の中に入っている文を返す
