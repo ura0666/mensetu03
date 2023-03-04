@@ -49,16 +49,9 @@ def handle_message(event):
         
         if (event.message.text == "開始"):
             response_message = "始めます"
-            line_bot_api.reply_message(
-                event.reply_token,
-                [
-                    TextSendMessage(text=response_message[a])
-                ]
-            )
-            response_message == "ルール・質問番号を文頭に入れてください"
             
 
-        elif(event.message.text == "1")
+        elif(event.message.text in "1")
             response_message = "質問２"
 
         elif (event.message.text == "こんばんは"):
