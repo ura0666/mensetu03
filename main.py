@@ -53,12 +53,15 @@ def handle_message(event):
             response_message = "質問１"
 
         elif (event.message.text .startswith("1","１")):
+            q=1
             response_message = "しつもん２"
 
         elif (event.message.text == "こんばんは"):
+            q=1
             response_message = "Good evening!"
 
         else:
+            q=1
             response_message = "その言葉はわかりません。"
 
         # 返信文を送信
