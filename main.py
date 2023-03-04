@@ -59,16 +59,15 @@ def handle_message(event):
 
 
         elif (event.message.text .startswith("1","１")):
-            q=1
-            response_message = ["質問２"]
+            a1 = event.message.text
+            response_message = "質問２"
 
         elif (event.message.text .startswith("2","２")):
-            q=1
-            response_message = ["質問３!"]
+            a2 = event.message.text
+            response_message = "質問３!"
 
         else:
-            q=1
-            response_message = ["その言葉はわかりません。"]
+            response_message = "その言葉はわかりません。"
 
         # 返信文を送信
         # response_message の中に入っている文を返す
