@@ -48,13 +48,8 @@ def handle_message(event):
     # event.message.text という変数にメッセージの内容が入っている
         
         if (event.message.text == "開始"):
+            q=2
             response_message = "始めます"
-            line_bot_api.reply_message(
-                event.reply_token,
-                [
-                    TextSendMessage(text=response_message)
-                ]
-            )
             response_message = "質問１"
 
         elif (event.message.text .startswith("1","１")):
@@ -68,12 +63,15 @@ def handle_message(event):
 
         # 返信文を送信
         # response_message の中に入っている文を返す
-        line_bot_api.reply_message(
-            event.reply_token,
-            [
-                TextSendMessage(text=response_message)
-            ]
-        )
+        while(i<q):
+            i=0
+            i+=1
+            line_bot_api.reply_message(
+                event.reply_token,
+                [
+                    TextSendMessage(text=response_message)
+                ]
+            )
 
 # ポート番号を環境変数から取得
 port = os.getenv("PORT")
