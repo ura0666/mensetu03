@@ -48,9 +48,9 @@ def handle_message(event):
  # event.message.text という変数にメッセージの内容が入っている
         
         if (event.message.text == "開始"):
-            a+=1
+            
             response_message = "始めます"
-            response_message = "質問1"
+            
 
         elif (event.message.text == "こんばんは"):
             response_message = "Good evening!"
