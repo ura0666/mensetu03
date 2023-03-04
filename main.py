@@ -48,8 +48,14 @@ def handle_message(event):
     # event.message.text という変数にメッセージの内容が入っている
         
         if (event.message.text == "開始"):
-            q=2
             response_message = ["始めます","質問１"]
+            line_bot_api.reply_message(
+                event.reply_token,
+                [
+                    TextSendMessage(text=response_message[0],response_message[1])
+                ]
+            )
+
 
         elif (event.message.text .startswith("1","１")):
             q=1
@@ -65,9 +71,6 @@ def handle_message(event):
 
         # 返信文を送信
         # response_message の中に入っている文を返す
-        while(i<q):
-            i=0
-            i+=1
             line_bot_api.reply_message(
                 event.reply_token,
                 [
