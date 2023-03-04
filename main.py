@@ -50,7 +50,6 @@ def handle_message(event):
         if (event.message.text == "開始"):
             response_message = "始めます"
             
-
         elif(event.message.text == "1")
             response_message = "質問２"
 
