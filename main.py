@@ -49,9 +49,15 @@ def handle_message(event):
         
         if (event.message.text == "開始"):
             response_message = "始めます"
+            line_bot_api.reply_message(
+                event.reply_token,
+                [
+                    TextSendMessage(text=response_message)
+                ]
+            )
             response_message = "質問１"
 
-        elif (event.message.text .startswith("1")):
+        elif (event.message.text .startswith("1","１")):
             response_message = "しつもん２"
 
         elif (event.message.text == "こんばんは"):
