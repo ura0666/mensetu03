@@ -50,7 +50,7 @@ def handle_message(event):
         if (event.message.text == "開始"):
             response_message = "始めます"
             
-        elif(event.message.text == "1")
+        elif (event.message.text == "1")
             response_message = "質問２"
 
         elif (event.message.text == "こんばんは"):
@@ -58,21 +58,15 @@ def handle_message(event):
 
         else:
             response_message = "その言葉はわかりません。"
-       
-
 
         # 返信文を送信
         # response_message の中に入っている文を返す
-        
-
-       
         line_bot_api.reply_message(
             event.reply_token,
             [
-                TextSendMessage(text=response_message[a])
+                TextSendMessage(text=response_message)
             ]
-        )
-            
+        )            
 
 
 # ポート番号を環境変数から取得
