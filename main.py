@@ -49,9 +49,10 @@ def handle_message(event):
         
         if (event.message.text == "開始"):
             response_message = "始めます"
-            
-        elif (event.message.text == "1")
-            response_message = "質問２"
+            response_message = "質問１"
+
+        elif (event.message.text in "1"):
+            response_message = "しつもん２"
 
         elif (event.message.text == "こんばんは"):
             response_message = "Good evening!"
@@ -66,8 +67,7 @@ def handle_message(event):
             [
                 TextSendMessage(text=response_message)
             ]
-        )            
-
+        )
 
 # ポート番号を環境変数から取得
 port = os.getenv("PORT")
