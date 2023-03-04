@@ -53,10 +53,10 @@ def handle_message(event):
         elif (event.message.text  .startswith(("1","１"))):
             response_message = "質問２"
 
-        elif (event.message.text .startswith("2","２")):
+        elif (event.message.text .startswith(("2","２"))):
             response_message = "質問３!"
         
-        elif (event.message.text .startswith("2","２")):
+        elif (event.message.text .startswith(("2","２"))):
             response_message = "質問４"
 
         else:
@@ -68,12 +68,6 @@ def handle_message(event):
             event.reply_token,
             [
                 TextSendMessage(text=response_message)
-            ]
-        )
-
-        line_bot_api.push_message(
-            [
-                TextSendMessage()
             ]
         )
 
