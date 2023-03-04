@@ -43,7 +43,7 @@ def handle_message(event):
     # ここにメッセージの内容による処理を書いていこう
 
     # メッセージの種類が「テキスト」なら
-    if event.type == "message":
+    if (event.type == "message"):
         response_message = ""
 
     # event.message.text という変数にメッセージの内容が入っている
