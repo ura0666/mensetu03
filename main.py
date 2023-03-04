@@ -48,7 +48,7 @@ def handle_message(event):
 
     # event.message.text という変数にメッセージの内容が入っている
         if (event.message.text == "開始"):
-            response_message = "ルール・応答の文頭に質問数を入力してください 例：１はい、（応答分）\n始めます\n質問１\nどうして当社に応募したのですか？"
+            response_message = "ルール・応答の文頭に質問数を入力してください 例：１はい、（応答分）\n 始めます \n 質問１\n どうして当社に応募したのですか？"
 
         elif (event.message.text  .startswith(("1","１"))):
             a1=event.message.text
