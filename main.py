@@ -51,24 +51,20 @@ def handle_message(event):
             response_message = "ルール・応答の文頭に質問数を入力してください 例：１はい、（応答分）\n 始めます \n 質問１\n どうして当社に応募したのですか？"
 
         elif (event.message.text  .startswith(("1","１"))):
-            a1=""
             a1=event.message.text
             response_message = "質問２\n当社に対してどんな印象を持っていますか？"
 
         elif (event.message.text .startswith(("2","２"))):
-            a2=""
             a2=event.message.text
             response_message = "質問３\n当社の店（商品）を利用したことがありますか？"
         
         elif (event.message.text .startswith(("3","3"))):
-            a3=""
             a3=event.message.text
             response_message = "質問４\nほかにはどんな会社を受けましたか？"
 
         elif (event.message.text .startswith(("4","4"))):
-            a4=""
             a4=event.message.text
-            response_message = 
+            response_message = "質問は終わりです面接練習を終了します \n ホームページを通じて応募させてもらいました。 \n 御社のクリーンなイメージを強く感じました。\n 以前から利用してました。\n 御社と比較して規模の小さな工務店1社にも応募しています。"
         else:
             response_message = "その言葉はわかりません。"
 
